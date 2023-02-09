@@ -1,0 +1,3 @@
+env
+backend/User/__pycache__
+backend/sql_app.db
