@@ -1,7 +1,7 @@
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 from werkzeug.security import generate_password_hash,check_password_hash
-from User.database import database_config
+from database import database_config
 Base,SessionLocal,engine=database_config()
 
 class User(Base):
