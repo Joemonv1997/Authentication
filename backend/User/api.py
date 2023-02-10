@@ -1,5 +1,5 @@
 import ast
-from User.models import SessionLocal,User
+from models import SessionLocal,User
 from flask import request,jsonify
 from blueprint import BLUEPRINT
 api_method=BLUEPRINT('api', __name__)
