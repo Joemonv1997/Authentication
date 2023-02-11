@@ -2,6 +2,15 @@ import ast
 from models import SessionLocal,User
 from flask import request,jsonify
 from blueprint import BLUEPRINT
+
+def serialize(row):
+    return {
+        "id" : str(row.id),
+        "username" : row.username,
+        "email" : row.email,
+        "admin":row.is_admin
+    } 
+
 api_method=BLUEPRINT('api', __name__)
 
 @api_method.route("/",methods=["GET"])
@@ -84,8 +93,10 @@ def delete_request(id):
 @api_method.route("/userslist",methods=["GET"])
 def users_request():
     session=SessionLocal()
-    all_users=session.query(User).all()
+    # all_users=session.query(User).all()
+    all_users=""
     if all_users:
-        return {"data":f"{all_users}"}
+        users = [serialize(x) for x in all_users]
+        return jsonify({"data":users})
     else:
-        return {"Failed":"No Users Found"}
+        return jsonify({"data":""})
