@@ -56,11 +56,6 @@ def register_request():
     
 @api_method.route("/user/<int:id>",methods=["PUT"])
 def user_request(id):
-    # username=request.json['username']
-    # password=request.json['password']
-    # email=request.json['email']
-    # admin=request.json['admin']
-    # admin=ast.literal_eval(admin)
     session=SessionLocal()
     try:
         user=session.query(User).filter_by(id=id).first()
