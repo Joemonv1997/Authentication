@@ -93,8 +93,7 @@ def delete_request(id):
 @api_method.route("/userslist",methods=["GET"])
 def users_request():
     session=SessionLocal()
-    # all_users=session.query(User).all()
-    all_users=""
+    all_users=session.query(User).all()
     if all_users:
         users = [serialize(x) for x in all_users]
         return jsonify({"data":users})
